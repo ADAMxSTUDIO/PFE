@@ -1,0 +1,217 @@
+/* 1st section custom */
+section.welcome{
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(12,3,51,0.3),rgba(12,3,51,0.3));
+    position: relative;
+    padding: 0 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* Background-video custom */
+video{
+    object-fit: cover;
+    z-index: -1;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    /* top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+}
+/* @media (min-aspect-ratio: 16/9){
+    video{
+        width: 100%;
+        height: auto;
+    }
+}
+@media (max-aspect-ratio: 16/9){
+    video{
+        width: auto;
+        height: 100%;
+    }
+} */
+.content{
+    position: relative;
+}
+.content>h1{
+    color: #fff;
+    font-size: 10em !important;
+    font-weight: 900;
+    -webkit-transition: var(--main-transition);
+    transition: var(--main-transition);
+}
+.content>h1:hover{
+    -webkit-text-stroke: 2px #fff;
+    color: transparent;
+}
+.content>p{
+    font-size: 1.5em;
+}
+.content>a{
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    width: 160px;
+    padding: 10px 50px;
+    border: 2px solid #fff;
+    border-radius: 20px;
+    font-size: 1.2em;
+    position: absolute;
+    left: 50%;
+    top: 110%;
+    transform: translate(-50%, 0);
+    -webkit-transition: var(--main-transition);
+    transition: var(--main-transition);
+}
+.content>a:hover{
+    background-color: #fff;
+    color: transparent;
+}
+/* ////////////////// */
+
+/* Main section - explore */
+section.main{
+    padding: 50px 80px;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+.main>.main-filters{
+    position: relative;
+    padding-bottom: 45px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.main-filters>h4{
+    font-weight: 900;
+}
+.main-filters>select{
+    padding: 15px 35px 15px 25px;
+    font-size: 1.2em;
+    font-weight: 500;
+    border: 1px solid rgb(214, 214, 214);
+    border-radius: 7px;
+    background: transparent;
+    -webkit-appearance: unset;
+    -moz-appearance: unset;
+    appearance: unset;
+}
+.main-filters>i{
+    position: absolute;
+    left: 98%;
+    bottom: 65%;
+}
+.main>.main-pictures{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-auto-rows: auto;
+    grid-auto-flow: dense;
+}
+.main>.main-pictures>.picture{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: span auto;
+    grid-row: span auto;
+}
+.main-pictures>.picture>img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    vertical-align: middle;
+    display: inline-block;
+}
+/* .main-pictures .wide{
+    grid-column: span 2;
+}
+.main-pictures .tall{
+    grid-column: span 2;
+}
+.main-pictures{
+    grid-column: span 2;
+    grid-row: span 2;
+} */
+.main-pictures>.picture::before{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    content: 'see picture';
+    color: #fff;
+    font-size: 3em;
+    font-weight: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: grey;
+    opacity: 0;
+    -webkit-transition: var(--main-transition);
+    transition: var(--main-transition);
+}
+.picture:hover + .picture::before{
+    opacity: .7;
+}
+.main-pictures>.picture>i{
+    z-index: 2;
+    position: absolute;
+    width: auto;
+    height: auto;
+    padding: 10px;
+    font-size: 1.2em;
+    color: #4a4a4a;
+    margin: 2px;
+    background: whitesmoke;
+    border: 1px solid whitesmoke;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.picture>i:nth-child(1){
+    top: 1%;
+    left: 89%;
+}
+.picture>i:nth-child(2){
+    top: 1%;
+    left: 79%;
+    padding: 10px 12.5px;
+}
+.picture>i:nth-child(3){
+    top: 93%;
+    left: 89%;
+}
+.main-pictures>.picture>i:hover{
+    opacity: .7;
+}
+.main-pictures>.picture>.picture-profile{
+    z-index: 2;
+    position: absolute;
+    top: 93%;
+    left: 1%;
+    display: flex;
+    justify-content: space-around;
+    gap: 5px;
+    cursor: pointer;
+}
+.picture>.picture-profile>img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.picture>.picture-profile>p{
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: 700;
+    position: relative;
+    top: 6px;
+}
+/* ////////////////// */

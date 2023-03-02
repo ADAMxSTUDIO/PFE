@@ -1,0 +1,12 @@
+Models/ Migration/ Seeder/ Factory:
+    -- php artisan make:model Client -m -s -f
+    -- php artisan make:model Owner -m -s -f
+    -- php artisan make:model Category -m -s -f
+    -- php artisan make:model Picture -m -s
+    -- php artisan make:model Sale -m -s -f
+    -- php artisan make:model Following -m -s -f
+    -- php artisan make:model Follwer -m -s -f
+    -- php artisan make:model Collection -m -s
+    -- php artisan make:model Like -m -s -f
+Controller:
+    -- php artisan make:controller PictureController --model=Picture

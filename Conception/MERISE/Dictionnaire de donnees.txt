@@ -1,0 +1,7 @@
+user ( firstname, lastname, email, password, profile_pic, following, type )
+client ( )
+owner ( Paypal, bio, total_views, followers, income )
+picture ( category, license, publish_date, dimensions, aspect_ratio, file_size, colors, views, likes, downloads, price )
+sale ( sale_date )
+gallery ( label )
+client_action ( like, collect )  
