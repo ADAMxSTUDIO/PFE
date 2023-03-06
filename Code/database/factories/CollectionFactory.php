@@ -18,8 +18,8 @@ class CollectionFactory extends Factory
     public function definition(): array
     {
         return [
-            'client_id' => fake()->numberBetween(0, $int2 = DB::table('clients')->count()),
-            'picture_id' => fake()->numberBetween(0, $int2 = DB::table('pictures')->count()),
+            'client_id' => fake()->numberBetween(1, $int2 = DB::table('clients')->count()),
+            'picture_id' => fake()->numberBetween(1, $int2 = DB::table('pictures')->count()),
         ];
     }
 }

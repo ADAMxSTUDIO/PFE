@@ -18,8 +18,8 @@ class FollowingFactory extends Factory
     public function definition(): array
     {
         return [
-            'client_id' => fake()->numberBetween(0, DB::table('clients')->count()),
-            'owner_id' => fake()->numberBetween(0, DB::table('owners')->count()),
+            'client_id' => fake()->numberBetween(1, DB::table('clients')->count()),
+            'owner_id' => fake()->numberBetween(1, DB::table('owners')->count()),
         ];
     }
 }
