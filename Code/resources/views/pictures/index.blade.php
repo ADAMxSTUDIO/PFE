@@ -55,7 +55,7 @@
                         {{-- <i class="fa-solid fa-bookmark"></i> --}}
                         <i class="fa-solid fa-circle-arrow-down" title="Download"></i>
                         {{-- <i class="fa-solid fa-check-to-slot"></i> --}}
-                        <div class="picture-profile">
+                        <div class="picture-profile" title="{{ Owner::findOrFail($picture->owner_id)->firstname }} {{ Owner::findOrFail($picture->owner_id)->lastname }}">
                             <img src="{{ Owner::findOrFail($picture->owner_id)->profile_pic }}" alt="" />
                             <p>{{ Owner::findOrFail($picture->owner_id)->firstname }} {{ Owner::findOrFail($picture->owner_id)->lastname }}</p>
                         </div>
