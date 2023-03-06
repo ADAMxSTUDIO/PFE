@@ -26,3 +26,33 @@ function exploreAnchor() {
 }
 // => execute
 exploreAnchor();
+
+
+//
+function showGestures() {
+
+    let pictures = document.querySelectorAll('.picture');
+    // console.log(pictures);
+
+    pictures.forEach( picture => {
+
+        let gestures = picture.querySelectorAll('i'),
+            profile = picture.querySelector('.picture-profile');
+            // greyFilter = picture.querySelector('.picture-profile');
+            console.log(gestures, profile, greyFilter);
+
+        picture.addEventListener('mouseover', () => {
+            gestures.forEach( gesture => gesture.setAttribute('style', 'display: inline;') );
+            profile.setAttribute('style', 'visibility: visible;');
+        })
+
+        picture.addEventListener('mouseout', () => {
+            gestures.forEach( gesture => gesture.removeAttribute('style') )
+            profile.removeAttribute('style');
+        })
+
+    })
+
+}
+// => execute
+showGestures();
