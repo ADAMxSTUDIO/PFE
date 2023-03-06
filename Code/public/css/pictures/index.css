@@ -146,7 +146,7 @@ section.main{
     position: absolute;
     width: 100%;
     height: 100%;
-    content: 'see picture';
+    content: 'view picture';
     color: #fff;
     font-size: 3em;
     font-weight: 100;
@@ -154,15 +154,17 @@ section.main{
     justify-content: center;
     align-items: center;
     background-color: grey;
+    border-radius: inherit;
     opacity: 0;
     -webkit-transition: var(--main-transition);
     transition: var(--main-transition);
 }
-.picture:hover + .picture::before{
+.main-pictures>.picture:hover + .picture::before{
     opacity: .7;
 }
 .main-pictures>.picture>i{
     z-index: 2;
+    display: none;
     position: absolute;
     width: auto;
     height: auto;
@@ -193,6 +195,7 @@ section.main{
 }
 .main-pictures>.picture>.picture-profile{
     z-index: 2;
+    visibility: hidden;
     position: absolute;
     top: 93%;
     left: 1%;

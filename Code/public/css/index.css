@@ -31,6 +31,7 @@
 /* Header */
 /* Navigation bar custom */
 header{
+    z-index: 99;
     position: absolute;
     left: 0;
     top: 0;
