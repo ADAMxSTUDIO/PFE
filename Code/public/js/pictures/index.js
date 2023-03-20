@@ -28,31 +28,69 @@ function exploreAnchor() {
 exploreAnchor();
 
 
-//
-function showGestures() {
 
+
+
+// This function is made to switch picture's gestures when using them
+function switchPicGestures() {
+
+    // Specify all resources
     let pictures = document.querySelectorAll('.picture');
+    // Specify all <i>'s options clickable 
+    const iClasses = [
+        ['fa-regular fa-heart', 'fa-regular fa-bookmark', 'fa-solid fa-circle-arrow-down'],
+        ['fa-solid fa-heart', 'fa-solid fa-bookmark', 'fa-solid fa-check-to-slot']
+    ];  
     // console.log(pictures);
+    
+    pictures.forEach( picture => 
+    {
+        const profile = picture.querySelector('.picture-profile'),
+              views = picture.querySelector('span');
 
-    pictures.forEach( picture => {
 
-        let gestures = picture.querySelectorAll('i'),
-            profile = picture.querySelector('.picture-profile');
-            // greyFilter = picture.querySelector('.picture-profile');
-            console.log(gestures, profile, greyFilter);
+        // Show picture's gestures on hovering
+        picture.addEventListener('mouseover', () => 
+        {
+            profile.setAttribute('style', 'visibility: visible;')
+            picture.querySelectorAll('i').forEach( (i, index) => 
+            {
+                // Display gestures & views
+                i.setAttribute('style', 'display: flex;');
+                views.setAttribute('style', 'display: flex;');
 
-        picture.addEventListener('mouseover', () => {
-            gestures.forEach( gesture => gesture.setAttribute('style', 'display: inline;') );
-            profile.setAttribute('style', 'visibility: visible;');
+                // Change gesture's options when clicked
+                i.addEventListener('click', () => 
+                {
+                    iClasses.forEach( iClassCateg => 
+                    {
+                        iClassCateg.forEach( (iclassDefault, iDefIndex) => {
+                            iClassCateg.forEach( (iclassClicked, iClkIndex) => {
+                                if ( index === iDefIndex && index === iClkIndex ){
+                                    i.setAttribute('class', iclassClicked);
+                                }
+                            })
+                        })
+                    })
+                })
+            });
         })
 
-        picture.addEventListener('mouseout', () => {
-            gestures.forEach( gesture => gesture.removeAttribute('style') )
-            profile.removeAttribute('style');
+        // Hide them while not
+        picture.addEventListener('mouseout', () => 
+        {
+            // Hide gestures & profile
+            picture.querySelectorAll('i').forEach( i => 
+            {
+                views.removeAttribute('style');
+                i.removeAttribute('style');
+                profile.removeAttribute('style');
+            });
         })
 
     })
 
+
 }
 // => execute
-showGestures();
+switchPicGestures();

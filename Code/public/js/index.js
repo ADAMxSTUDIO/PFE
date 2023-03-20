@@ -3,10 +3,10 @@ function chnageNavOpacity() {
 
     // Specify all resources
     const navBar = document.querySelector('header'),
-          branding = navBar.querySelector('h3'),
-          anchors = navBar.querySelectorAll('a'),
-          joinAnchor = navBar.querySelector('a:nth-child(5)'),
-          search = navBar.querySelector('i');
+        branding = navBar.querySelector('h3'),
+        anchors = navBar.querySelectorAll('a'),
+        joinAnchor = navBar.querySelector('a:nth-child(5)'),
+        search = navBar.querySelector('i');
     // console.log(navBar, branding, anchors, joinAnchor, search);
     
     // Track window height while scrolling
@@ -33,11 +33,9 @@ function chnageNavOpacity() {
         }
 
     })
-    
 }
 // => execute
 chnageNavOpacity();
-
 
 
 // This function is made to add a btn for scrolling to the all-top

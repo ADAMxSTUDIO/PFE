@@ -80,7 +80,6 @@ section.main{
     align-items: center;
 }
 .main>.main-filters{
-    position: relative;
     padding-bottom: 45px;
     width: 100%;
     display: flex;
@@ -90,21 +89,19 @@ section.main{
 .main-filters>h4{
     font-weight: 900;
 }
-.main-filters>select{
-    padding: 15px 35px 15px 25px;
+select#filter{
+    padding: 15px 35px;
     font-size: 1.2em;
     font-weight: 500;
-    border: 1px solid rgb(214, 214, 214);
+    /* border: 1px solid rgb(214, 214, 214);
     border-radius: 7px;
     background: transparent;
     -webkit-appearance: unset;
     -moz-appearance: unset;
-    appearance: unset;
+    appearance: unset; */
 }
-.main-filters>i{
-    position: absolute;
-    left: 98%;
-    bottom: 65%;
+#filter>option:nth-child(1){
+    display: none;
 }
 .main>.main-pictures{
     width: 100%;
@@ -123,8 +120,17 @@ section.main{
     align-items: center;
     grid-column: span auto;
     grid-row: span auto;
+    overflow: hidden;
+    -webkit-transition: var(--main-transition);
+    transition: var(--main-transition);
+    transition-delay: .05s;
+    cursor: pointer;
 }
-.main-pictures>.picture>img{
+.picture:hover{
+    -webkit-filter: brightness(95%);
+    filter: brightness(95%);
+}
+.picture>.picture-lower>img{
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -142,32 +148,24 @@ section.main{
     grid-column: span 2;
     grid-row: span 2;
 } */
-.main-pictures>.picture::before{
+.picture-upper>span{
+    display: none;
+    background-color: white;
     position: absolute;
-    width: 100%;
-    height: 100%;
-    content: 'view picture';
-    color: #fff;
-    font-size: 3em;
-    font-weight: 100;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: grey;
-    border-radius: inherit;
-    opacity: 0;
-    -webkit-transition: var(--main-transition);
-    transition: var(--main-transition);
+    top: 1%;
+    left: 1%;
+    padding: 10px;
+    margin: 2px;
+    color: #4a4a4a;
+    border-radius: 5px;
 }
-.main-pictures>.picture:hover + .picture::before{
-    opacity: .7;
+.picture-upper>span::before{
+    content: "\f06e";
+    font-family: "FontAwesome";
 }
-.main-pictures>.picture>i{
-    z-index: 2;
+.picture i{
     display: none;
     position: absolute;
-    width: auto;
-    height: auto;
     padding: 10px;
     font-size: 1.2em;
     color: #4a4a4a;
@@ -177,23 +175,23 @@ section.main{
     border-radius: 5px;
     cursor: pointer;
 }
-.picture>i:nth-child(1){
+.picture i:nth-child(1){
     top: 1%;
     left: 89%;
 }
-.picture>i:nth-child(2){
+.picture i:nth-child(2){
     top: 1%;
     left: 79%;
     padding: 10px 12.5px;
 }
-.picture>i:nth-child(3){
+.picture i:nth-child(3){
     top: 93%;
     left: 89%;
 }
-.main-pictures>.picture>i:hover{
+.main-pictures .picture i:hover{
     opacity: .7;
 }
-.main-pictures>.picture>.picture-profile{
+.picture-lower>.picture-profile{
     z-index: 2;
     visibility: hidden;
     position: absolute;
@@ -204,13 +202,13 @@ section.main{
     gap: 5px;
     cursor: pointer;
 }
-.picture>.picture-profile>img{
+.picture-lower>.picture-profile>img{
     width: 40px;
     height: 40px;
     border-radius: 50%;
     object-fit: cover;
 }
-.picture>.picture-profile>p{
+.picture-lower>.picture-profile>p{
     color: #fff;
     font-size: 1.2em;
     font-weight: 700;
