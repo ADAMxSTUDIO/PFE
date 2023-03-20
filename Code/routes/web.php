@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\PictureController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PictureController;
+use App\Http\Controllers\FilterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +16,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Picture resource routes
+Route::resource('picture', PictureController::class);
 // Index page - import pictures
 Route::get('/', [PictureController::class, 'index'])->name('index');
+// Picture filters
+Route::get('/filter', FilterController::class)->name('picture.filter');
+// Category index page
+Route::get('/category', [CategoryController::class, 'index']);
+// Pictures of a specific category page
+Route::get('/category/{title}', [CategoryController::class, 'picture'])->name('category.picture');
 
-
-Route::resource('picture', PictureController::class);
 
 
 // Auth::routes();
