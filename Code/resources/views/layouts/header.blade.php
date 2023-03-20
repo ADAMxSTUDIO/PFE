@@ -16,7 +16,7 @@
         </div>
         {{-- Anchors --}}
         <nav>
-            <i class="fa-solid fa-magnifying-glass" title="search categories"></i>
+            <i class="fa-solid fa-magnifying-glass" title="search categories" onclick="window.location.href = '{{ url('/category') }}'"></i>
             <a href="{{ URL::to('/') }}#explore">Explore</a>
             <a href="">Upload</a>
             <a href="">Log in</a>
