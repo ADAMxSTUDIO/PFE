@@ -5,16 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>CAPTURE.IT | World's best & high end pictures for all categories</title>
+    <link rel="icon" href="imgs/branding/icon.png" type="image/icon type">
+    <title>Capture.It | World's best & high end pictures for all categories</title>
     <link rel="stylesheet" href="css/pictures/index.css" />
-    @vite(['resources/js/app.js'])    
+    @vite(['resources/js/app.js'])
 </head>
 <body>
     <div class="container-fluid p-0">
         {{-- Index section that will be displayed just when opening this website --}}
         <section class="welcome">
             {{-- Background-video --}}
-            <video muted autoplay loop plays-inline>Update your browser to the latest version so, you can preview this media 
+            <video muted autoplay loop plays-inline>Update your browser to the latest version so, you can preview this media :to
                 <source src="vids/StartVideo.mp4" type="video/mp4" />
             </video>
 
@@ -34,33 +35,56 @@
             {{-- Pictures-filter --}}
             <div class="main-filters d-flex justify-content-between align-items-center">
                 <h3 class="">Dive in, and explore unique pictures</h3>
-                <i class="fa-solid fa-chevron-down"></i>
-                <select name="filter" id="filter">
-                    <option value="1" selected>Trending</option>
-                    <option value="1">Most liked</option>
-                    <option value="1">Free</option>
-                    <option value="1">Lisence</option>
-                </select>
+                <form action="{{ route('picture.filter') }}" method="GET">
+                    @csrf
+                    <select name="filter" id="filter" onchange = "this.form.submit()" class="form-control @error('filter') is-invalid @enderror">
+                        <option selected disabled>Filter</option>
+                        <option value="trending">Trending</option>
+                        <option value="new">New</option>
+                        <option value="liked">Liked</option>
+                        <option value="free">Free</option>
+                        <option value="license">License</option>
+                    </select>
+                    @error('filter')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </form>
             </div>
+            {{-- <script>
+                document.querySelector('select').onchange = (event) => {
+                        window.location.href = '/picture/' + event.target.value + '/filter';
+                    }
+            </script> --}}
             {{-- Pictures --}}
             @php
                 use App\Models\Owner;
             @endphp
+            @if (session()->has('pictures'))
+                @php $pictures = session()->get('pictures'); @endphp
+            @endif
             <div class="main-pictures">
                 @forelse ($pictures as $picture)
                     <div class="picture">
-                        <i class="fa-regular fa-heart" title="Like"></i>
-                        {{-- <i class="fa-solid fa-heart"></i> --}}
-                        <i class="fa-regular fa-bookmark" title="Collect"></i>
-                        {{-- <i class="fa-solid fa-bookmark"></i> --}}
-                        <i class="fa-solid fa-circle-arrow-down" title="Download"></i>
-                        {{-- <i class="fa-solid fa-check-to-slot"></i> --}}
-                        <div class="picture-profile" title="{{ Owner::findOrFail($picture->owner_id)->firstname }} {{ Owner::findOrFail($picture->owner_id)->lastname }}">
-                            <img src="{{ Owner::findOrFail($picture->owner_id)->profile_pic }}" alt="" />
-                            <p>{{ Owner::findOrFail($picture->owner_id)->firstname }} {{ Owner::findOrFail($picture->owner_id)->lastname }}</p>
+
+                        <div class="picture-upper">
+                            <span>    {{ $picture->views }}</span>
+                            <i class="fa-regular fa-heart" title="Like"></i>
+                            {{-- <i class="fa-solid fa-heart"></i> --}}
+                            <i class="fa-regular fa-bookmark" title="Collect"></i>
+                            {{-- <i class="fa-solid fa-bookmark"></i> --}}
                         </div>
-                        <img src="{{ $picture->src }}" alt="" />
-                    </div>                    
+
+                        <div class="picture-lower">
+                            <i class="fa-solid fa-circle-arrow-down" title="Download"></i>
+                            {{-- <i class="fa-solid fa-check-to-slot"></i> --}}
+
+                            <div class="picture-profile" title="{{ Owner::findOrFail($picture->owner_id)->firstname }} {{ Owner::findOrFail($picture->owner_id)->lastname }}">
+                                <img src="{{ Owner::findOrFail($picture->owner_id)->profile_pic }}" alt="picture's owner profile" />
+                                <p>{{ Owner::findOrFail($picture->owner_id)->firstname }} {{ Owner::findOrFail($picture->owner_id)->lastname }}</p>
+                            </div>
+                            <img src="{{ $picture->src }}" alt="picture" />
+                        </div>
+                    </div>
                 @empty
                 <div class="alert alert-warning" role="alert">
                     <h4 class="alert-heading">Oops!</h4>
@@ -71,9 +95,13 @@
                 @endforelse
             </div>
         </section>
-            
+        {{-- <div class="pagination">
+            {{ $pictures->links() }}
+        </div> --}}
     </div>
 
+    {{-- Footer Component --}}
+    @extends('layouts.footer')
     <script src="js/pictures/index.js" type="text/babel"></script>
 </body>
 </html>
