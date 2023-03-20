@@ -10,3 +10,5 @@ Models/ Migration/ Seeder/ Factory:
     -- php artisan make:model Like -m -s -f
 Controller:
     -- php artisan make:controller PictureController --model=Picture
+    -- php artisan make:controller FilterController -i
+    -- php artisan make:controller CategoryController --model=Category
