@@ -82,7 +82,7 @@ class CategorySeeder extends Seeder
             'preview' => 'imgs/categories/food.jpg',
         ]);
         Category::create([
-            'title' => 'Forced Perspective',
+            'title' => 'Perspective',
             'preview' => 'imgs/categories/forced.jpg',
         ]);
         Category::create([
